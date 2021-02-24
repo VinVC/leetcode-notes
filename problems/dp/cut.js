@@ -31,7 +31,7 @@ function cutDp(arr) {
   let r = [0];
   for (let i = 1; i <= arr.length; i++) {
     let q = -1;
-    // 内循环的含义：长度为i的钢条，依次从左边切去j（1<j<=i）,剩余i-j, 求它们的最大值
+    // 内循环的含义：长度为i的钢条，依次从左边切去j（1<=j<=i）,剩余i-j, 求它们的最大值
     for (let j = 1; j <= i; j++) {
       q = Math.max(q, arr[j - 1] + r[i - j]);
     }
