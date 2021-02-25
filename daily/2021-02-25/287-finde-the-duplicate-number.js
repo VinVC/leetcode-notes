@@ -9,7 +9,7 @@ var findDuplicate = function (nums) {
   let len = nums.length,
     mp = new Map();
   for (let i = 0; i < len; i++) {
-    if (Map.get(nums[i])) return nums[i];
+    if (mp.get(nums[i])) return nums[i];
     mp.set(nums[i], 1);
   }
 };
