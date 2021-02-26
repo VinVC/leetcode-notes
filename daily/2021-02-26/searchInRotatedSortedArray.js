@@ -34,5 +34,9 @@ var search = function (nums, target) {
     right = len - 1;
   while (left <= right) {
     let mid = ((right - left) >> 1) + left;
+    if (nums[mid] === target) return mid;
+    if (nums[0] <= nums[mid]) {
+    } else {
+    }
   }
 };
