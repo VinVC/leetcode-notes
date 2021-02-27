@@ -25,21 +25,16 @@
  */
 var searchInsert = function (nums, target) {
   if (!nums.length) return 0
-  let leftIdx = binarySearch(nums, target, true),
-    rightIdx = binarySearch(nums, target, false)
-  if (nums[leftIdx] === target) return leftIdx
-  if (leftIdx === 0) return 0
-  if (rightIdx === nums.length) return nums.length
-  return rightIdx - 1
+  return binarySearch(nums, target)
 }
 
-function binarySearch(nums, target, lower) {
+function binarySearch(nums, target) {
   let left = 0,
     right = nums.length - 1,
     ans = nums.length
   while (left <= right) {
     let mid = ((right - left) >> 1) + left
-    if (nums[mid] > target || (lower && nums[mid] >= target)) {
+    if (nums[mid] >= target) {
       right = mid - 1
       ans = mid
     } else {
