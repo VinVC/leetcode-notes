@@ -39,6 +39,31 @@ var lengthOfLIS = function (nums) {
   return max;
 };
 
-/**
- *
- */
+function longthOfLISBinarySearch(nums) {
+  const length = nums.length;
+  if (length <= 1) return length;
+  let len = 1,
+    dp = [];
+  dp[len] = nums[0];
+  for (let i = 1; i < length; i++) {
+    if (nums[i] > dp[len]) {
+      dp[++len] = nums[i];
+    } else {
+      let l = 1,
+        r = len,
+        pos = 0;
+      while (l <= r) {
+        let mid = (l + r) >> 1;
+        if (dp[mid] < nums[i]) {
+          // 找到比nums[i]小且最靠右的值
+          pos = mid;
+          l = mid + 1;
+        } else {
+          r = mid - 1;
+        }
+      }
+      dp[pos + 1] = nums[i];
+    }
+  }
+  return len;
+}
