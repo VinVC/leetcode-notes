@@ -20,23 +20,23 @@
  * @return {number}
  */
 var firstMissingPositive = function (nums) {
-  let len = nums.length
-  if (!len || !nums.includes(1)) return 1
+  let len = nums.length;
+  if (!len || !nums.includes(1)) return 1;
   for (let i = 0; i < len; i++) {
     if (nums[i] <= 0) {
-      nums[i] = len + 1
+      nums[i] = len + 1;
     }
   }
   for (let i = 0; i < len; i++) {
-    let num = Math.abs(nums[i])
-    if (num <= n) {
-      nums[num - 1] = -Math.abs(nums[num - 1])
+    let num = Math.abs(nums[i]);
+    if (num <= len) {
+      nums[num - 1] = -Math.abs(nums[num - 1]);
     }
   }
   for (let i = 0; i < len; i++) {
     if (nums[i] > 0) {
-      return i + 1
+      return i + 1;
     }
   }
-  return len + 1
-}
+  return len + 1;
+};
