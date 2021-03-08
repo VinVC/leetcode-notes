@@ -20,37 +20,46 @@
 1 <= s.length <= 16
 s 仅由小写英文字母组成
 
-来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/palindrome-partitioning
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
  * @param {string} s
  * @return {string[][]}
  */
 var partition = function (s) {
-  const dfs = (i) => {
+  const dfs = i => {
     if (i === n) {
-      ret.push(ans.slice())
-      return
+      ret.push(ans.slice());
+      return;
     }
     for (let j = i; j < n; ++j) {
       if (f[i][j]) {
-        ans.push(s.slice(i, j + 1))
-        dfs(j + 1)
-        ans.pop()
+        ans.push(s.slice(i, j + 1));
+        dfs(j + 1);
+        ans.pop();
       }
     }
-  }
+  };
 
-  const n = s.length
-  const f = new Array(n).fill(0).map(() => new Array(n).fill(true))
+  const n = s.length;
+  const f = new Array(n).fill(0).map(() => new Array(n).fill(true));
   let ret = [],
-    ans = []
+    ans = [];
 
   for (let i = n - 1; i >= 0; --i) {
     for (let j = i + 1; j < n; ++j) {
-      f[i][j] = s[i] === s[j] && f[i + 1][j - 1]
+      f[i][j] = s[i] === s[j] && f[i + 1][j - 1];
     }
   }
-  dfs(0)
-  return ret
-}
+  dfs(0);
+  return ret;
+};
+
+/**
+ * 总结：
+ *1. 动态规划+回溯
+ *2. 先计算每一个[i,j]区间内是不是回文串，用f[i][j]表示 i>=j时直接为true;i<j时f[i][j] = f[i+1][j-1] && s[i] === s[j]
+ */
+
+/**
+ * 2021-03-07 vino
+ */
