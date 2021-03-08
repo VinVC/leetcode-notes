@@ -13,4 +13,21 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-var nextGreaterElements = function (nums) {}
+var nextGreaterElements = function (nums) {
+  const stack = [],
+    len = nums.length,
+    ans = new Array(len).fill(-1);
+  for (let i = 0; i < 2 * len - 1; i++) {
+    let j = i % len;
+    while (stack.length && nums[stack[stack.length - 1]] < nums[j]) {
+      ans[stack.pop()] = nums[j];
+    }
+    stack.push(j);
+  }
+  return ans;
+};
+
+/**
+ * 总结：
+ * 1. 单调栈: 本题维护一个单调不增（栈底->栈顶）的单调栈，如果遍历到一个较大的数，那么将栈中的所有元素弹出
+ */
