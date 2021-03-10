@@ -33,8 +33,42 @@ function swap(nums, i, j) {
   nums[j] = temp;
 }
 
+/**
+ * 解法二：大根堆
+ */
+var findKthLargest2 = function (nums, k) {
+  let heapSize = nums.length
+  buildHeap(nums, heapSize)
+  for(let i = nums.length - 1; i>= nums.length - k + 1; i--) {
+    swap(nums, 0, i)
+    heapSize--
+    heapify(nums, i, heapSize)
+  }
+  return nums[0]
+};
+
+function buildHeap(nums, heapSize) {
+  for(let i= (heapSize>>1); i>=0; i--) {
+    heapify(nums, i, heapSize)
+  }
+}
+
+function heapify(nums, i, heapSize) {
+  let left = 2*i + 1
+  while(left < heapSize) {
+    let largest = left+1 < heapSize && nums[left+1] > nums[left] ? left+1 : left
+    largest = nums[largest] > nums[i] ? largest : i
+    if(largest === i) break
+    swap(nums, i, largest)
+    i = largest
+    left = 2*i + 1
+  }
+}
+
 // for test
 
 const arr = [10, 4, 6, 2, 8, 9, 1, 3];
 
 console.log(findKthLargest(arr, 6));
+
+
