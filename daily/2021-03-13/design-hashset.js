@@ -37,3 +37,5 @@ MyHashSet.prototype.contains = function (key) {
 MyHashSet.prototype.hash = function (key) {
   return key % this.BASE
 }
+
+// vino
