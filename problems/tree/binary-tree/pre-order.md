@@ -29,3 +29,23 @@ conR(no)->opR(right)->conL
 conL(yes,right)->conS
 conL(no)->opL(left)->conS
 ```
+
+## 代码
+
+```js
+//先序遍历--迭代
+preOrderInteration(root = this.root) {
+  const stack = [];
+  if (root) stack.push(root);
+  while (stack.length) {
+    root = stack.pop();
+    root.showData();
+    if (root.right) {
+      stack.push(root.right);
+    }
+    if (root.left) {
+      stack.push(root.left);
+    }
+  }
+}
+```

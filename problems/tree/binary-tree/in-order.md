@@ -30,3 +30,24 @@ conN(no)->opN(right)->conN
 conS(yes)->e
 conS(no)->opS(right)->conN
 ```
+
+## 代码
+
+```js
+//中序遍历--迭代
+inOrderInteration(root = this.root) {
+  const stack = [];
+  while (true) {
+    if (root) {
+      stack.push(root);
+      root = root.left;
+    } else if (stack.length) {
+      root = stack.pop();
+      root.showData();
+      root = root.right;
+    } else {
+      break;
+    }
+  }
+}
+```
