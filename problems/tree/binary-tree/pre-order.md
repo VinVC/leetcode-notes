@@ -22,13 +22,10 @@ conL=>condition: left is empty?
 
 
 s->input->op1->conS
-
 conS(yes)->e
 conS(no)->op2(right)->conR
-
 conR(yes,right)->conL
 conR(no)->opR(right)->conL
-
 conL(yes,right)->conS
 conL(no)->opL(left)->conS
 ```

@@ -24,10 +24,8 @@ conR=>condition: right is null?
 s->input->op->conS
 conS(yes)->opReverse->e
 conS(no)->opS(right)->conL
-
 conL(yes, right)->conR
 conL(no)->opL(right)->conR
-
 conR(yes, right)->conS
 conR(no)->opR(right)->conS
 ```

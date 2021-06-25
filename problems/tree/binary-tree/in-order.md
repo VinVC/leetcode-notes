@@ -18,17 +18,15 @@ e=>end: 结束
 
 input=>inputoutput: 输入node,stack=[]
 
-conN=>condition: node is null?
-conS=>condition: stack is empty?
-
 opN=>operation: push & node = node.left
 opS=>operation: (pop、访问) & node = node.right
 
-s->input->conN
+conN=>condition: node is null?
+conS=>condition: stack is empty?
 
+s->input->conN
 conN(yes)->conS
 conN(no)->opN(right)->conN
-
 conS(yes)->e
 conS(no)->opS(right)->conN
 ```
