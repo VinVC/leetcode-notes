@@ -36,5 +36,29 @@ conLeft(no)->opLeftNotNull(right)->conVal
 conRight(yes)->opRightIsNull->e
 conRight(no)->opRightNotNull(right)->conVal
 
+```
 
+## 代码
+
+```js
+function insert(node, root) {
+  let cur = root;
+  while (true) {
+    if (node.val < cur.val) {
+      if (cur.left) {
+        cur = cur.left;
+      } else {
+        cur.left = node;
+        break;
+      }
+    } else {
+      if (cur.right) {
+        cur = cur.right;
+      } else {
+        cur.right = node;
+        break;
+      }
+    }
+  }
+}
 ```
