@@ -30,3 +30,23 @@ var kthSmallest = function (root, k) {
     }
   }
 };
+
+/**
+ * 第k大
+ * 右 -> 中 -> 左
+ */
+function kthLargest(root, k) {
+  const stack = [];
+  while (true) {
+    if (root) {
+      stack.push(root);
+      root = root.right;
+    } else if (stack.length) {
+      let n = stack.pop();
+      if (--k === 0) return n.val;
+      root = n.left;
+    } else {
+      break;
+    }
+  }
+}
