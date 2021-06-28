@@ -20,7 +20,7 @@ var isValidBST = function (root) {
     } else if (stack.length) {
       let n = stack.pop();
       if (n.val <= cur) return false;
-      root = root.right;
+      root = n.right;
       cur = n.val;
     } else {
       break;
