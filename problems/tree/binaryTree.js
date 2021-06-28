@@ -27,20 +27,20 @@ class BianrySortTree {
     if (!this.root) {
       this.root = node;
     } else {
-      let parent,
-        current = this.root;
+      let current = this.root;
       while (true) {
-        parent = current;
-        if (data < parent.data) {
-          current = current.left;
-          if (!current) {
-            parent.left = node;
+        if (data < current.data) {
+          if (current.left) {
+            current = current.left;
+          } else {
+            current.left = node;
             break;
           }
         } else {
-          current = current.right;
-          if (!current) {
-            parent.right = node;
+          if (current.right) {
+            current = current.right;
+          } else {
+            current.right = node;
             break;
           }
         }
