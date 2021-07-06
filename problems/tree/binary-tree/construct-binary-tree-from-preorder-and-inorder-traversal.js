@@ -71,3 +71,32 @@ function TreeNode(val, left, right) {
 }
 
 // vino im
+
+/**
+ * 迭代
+ */
+function buildTreeIteration(preorder, inorder) {
+  if (!preorder || !preorder.length) return null;
+  const root = new TreeNode(preorder[0]),
+    stack = [];
+  stack.push(root);
+  let inorderIndex = 0,
+    preorderVal,
+    curNode = null;
+  for (let i = 1; i < preorder.length; i++) {
+    preorderVal = preorder[i];
+    curNode = stack[stack.length - 1];
+    if (curNode.val !== inorder[inorderIndex]) {
+      curNode.left = new TreeNode(preorderVal);
+      stack.push(curNode.left);
+    } else {
+      while (stack.length && stack[stack.length - 1].val === inorder[inorderIndex]) {
+        curNode = stack.pop();
+        inorderIndex++;
+      }
+      curNode.right = new TreeNode(preorderVal);
+      stack.push(curNode.right);
+    }
+  }
+  return root;
+}
