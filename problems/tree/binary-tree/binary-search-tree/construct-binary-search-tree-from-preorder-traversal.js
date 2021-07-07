@@ -22,25 +22,20 @@ let index = 0,
   len,
   arr;
 var bstFromPreorder = function (preorder) {
+  index = 0;
   len = preorder.length;
   arr = preorder;
-  return dfs(-Number.MAX_VALUE, Number.MAX_VALUE);
+  return dfs(Number.MIN_VALUE, Number.MAX_VALUE);
 };
 
 function dfs(low, high) {
   if (index === len) return null;
-
   let cur = arr[index];
-
   if (cur < low || cur > high) return null;
-
   index++;
   let root = new TreeNode(cur);
-
   root.left = dfs(low, cur);
-
   root.right = dfs(cur, high);
-
   return root;
 }
 
