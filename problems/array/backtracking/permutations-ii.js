@@ -10,19 +10,30 @@
  */
 var permuteUnique = function (nums) {
   if (!nums || !nums.length) return [[]];
-  const ans = [],
-    flag = new Array(nums.length).fill(false);
-  dfs(nums, ans, flag, []);
+  const ans = [];
+  dfs(nums, ans, []);
   return ans;
 };
 
-function dfs(dq, ans, flag, cur) {
-  if (cur.length === nums.length || !dq.length) {
+function dfs(dq, ans, cur) {
+  if (!dq.length) {
     ans.push([...cur]);
     return;
   }
-  let size = dq.length;
+  let size = dq.length,
+    mp = new Map();
   for (let i = 0; i < size; i++) {
-    let num = dq.shift();
+    let num = dq[0];
+    if (mp.has(num)) {
+      dq.shift();
+      dq.push(num);
+      continue;
+    }
+    dq.shift();
+    cur.push(num);
+    mp.set(num, true);
+    dfs(dq, ans, cur);
+    dq.push(num);
+    cur.pop();
   }
 }
