@@ -51,5 +51,5 @@ function isValid(n, curRow, curCol, board) {
 }
 
 // test
-
-console.log(solveNQueens(4));
+let ans = solveNQueens(8);
+console.log(ans.length);
