@@ -19,24 +19,24 @@ function merge2List(list1, list2) {
   return ans;
 }
 
-function dfs(len, ans, dq, path) {
-  if (path.length === len || !dq.length) {
+function dfs(len, ans, dequeue, path) {
+  if (path.length === len || !dequeue.length) {
     ans.push([...path]);
     return;
   }
-  let size = dq.length;
+  let size = dequeue.length; //size就是当前层级的宽度
   for (let i = 0; i < size; i++) {
-    let numArr = dq.shift();
+    let numArr = dequeue.shift();
     let list = numArr[0],
       index = numArr[1];
     path.push(list[index]);
 
-    if (index + 1 < list.length) dq.push([list, index + 1]);
+    if (index + 1 < list.length) dequeue.push([list, index + 1]);
 
-    dfs(len, ans, dq, path);
+    dfs(len, ans, dequeue, path);
 
-    if (index + 1 < list.length) dq.pop();
-    dq.push(numArr); //即使push回去当前步也不会再选了，但是后面的步要用
+    if (index + 1 < list.length) dequeue.pop();
+    dequeue.push(numArr); //即使push回去当前步也不会再选了，但是后面的步要用
 
     path.pop();
   }
