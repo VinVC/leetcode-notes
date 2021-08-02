@@ -27,7 +27,7 @@
  *
  * 思路：自底向上的动态规划，先求子结构的最优解
  * dp[i]: 以nums[i]结尾的数组的最长递增子序列的长度（注意：这个nums[i]一定要存在于子序列中，比如2 5 6 7 0，循环到0时，虽然前面的max很大，但是子序列包含0之后就只能为1了）
- * 状态转移方程：dp[i] = max(dp[j])+1   0<=j<i && nums[i]>nums[j]
+ * 状态转移方程：dp[i] = max(dp[j])+1   0 <= j < i && nums[i] > nums[j]
  */
 var lengthOfLIS = function (nums) {
   const len = nums.length;
