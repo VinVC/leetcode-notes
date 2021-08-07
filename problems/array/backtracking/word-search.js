@@ -16,12 +16,20 @@ var exist = function (board, word) {
     [0, 1],
     [0, -1],
     [1, 0],
-    [-1, 0],
+    [-1, 0]
   ];
   const visited = new Array(h);
   for (let i = 0; i < visited.length; ++i) {
     visited[i] = new Array(w).fill(false);
   }
+  /**
+   *
+   * @param {*} i 行
+   * @param {*} j 列
+   * @param {*} s 输入word
+   * @param {*} k 当前index
+   * @returns
+   */
   const check = (i, j, s, k) => {
     if (board[i][j] != s.charAt(k)) {
       return false;
