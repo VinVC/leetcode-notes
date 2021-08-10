@@ -11,7 +11,7 @@
  * @return {number[][]}
  */
 var zigzagLevelOrder = function (root) {
-  if (!root) return [[]];
+  if (!root) return [];
   const ans = [];
   const queue = [root];
   let isOrderLeft = true;
