@@ -11,10 +11,12 @@
  * @return {string[][]}
  */
 var solveNQueens = function (n) {
-  const board = new Array(n);
-  for (let i = 0; i < n; i++) {
-    board[i] = new Array(n).fill(".");
-  }
+  const board = new Array(n).fill(undefined).map(() => new Array(n).fill("."));
+  // const board = new Array(n).map(() => new Array(n).fill("."));
+  // for (let i = 0; i < n; i++) {
+  //   board[i] = new Array(n).fill(".");
+  // }
+  console.log(board);
   const ans = [];
   backtrack(n, ans, 0, board);
   return ans;
