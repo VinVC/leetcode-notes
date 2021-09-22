@@ -40,11 +40,13 @@ var findPeakElement2 = function (nums) {
     r = nums.length - 1;
   while (l < r) {
     let mid = ((r - l) >> 1) + l;
+    // 大的一侧一定有峰值
     if (nums[mid] > nums[mid + 1]) {
       r = mid;
     } else {
       l = mid + 1;
     }
   }
-  return l;
+  //这里返回l或r都行，因为是l=r的时候跳出的循环
+  return r;
 };
