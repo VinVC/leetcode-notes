@@ -3,6 +3,8 @@
  * @param {number[]} nums
  * @param {number} k
  * @return {number}
+ *
+ * 前缀和
  */
 var subarraySum = function (nums, k) {
   let count = 0,
