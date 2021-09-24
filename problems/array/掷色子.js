@@ -24,8 +24,10 @@ function findTop2(data, begin, end) {
   if (data[first].score === data[second].score) {
     return findTop2(data, first, second)
   } else {
-    console.log(first, data[first])
-    console.log(second, data[second])
+    // console.log(first, data[first])
+    for (let i = first; i <= second; i++) {
+      console.log(i, data[i])
+    }
     data[first].score = Number.MAX_SAFE_INTEGER
     return findTop2(data, first, second)
   }
@@ -49,6 +51,8 @@ const data = [
 
 for (let i = 0; i < 10; i++) {
   console.log(`第${i + 1}次`, findTop2(data, 0, data.length - 1))
-  console.log(data)
-  console.log('------------------------------------------------')
+  // console.log(data)
+  console.log(
+    '----------------------------------------------------------------------------'
+  )
 }
