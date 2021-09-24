@@ -7,10 +7,9 @@ function arrToTree(arr) {
     if (root.id === node.pid) {
       children.push(node);
       return true;
-    } else {
-      for (let i = 0; i < children.length; i++) {
-        if (preocess(children[i], node)) return true;
-      }
+    }
+    for (let i = 0; i < children.length; i++) {
+      if (preocess(children[i], node)) return true;
     }
     return false;
   };
@@ -18,6 +17,26 @@ function arrToTree(arr) {
   for (let i = 1; i < arr.length; i++) {
     preocess(root, arr[i]);
   }
+  return root;
+}
+
+//map方式
+function arrToTreeMap(arr) {
+  const mp = new Map();
+  let root = null;
+  let newArr = arr.map(node => {
+    let obj = { ...node };
+    mp.set(node.id, obj);
+    return obj;
+  });
+  newArr.forEach(node => {
+    if (node.pid) {
+      let children = mp.get(node.pid).children || (mp.get(node.pid).children = []);
+      children.push(node);
+    } else {
+      root = node;
+    }
+  });
   return root;
 }
 
@@ -31,8 +50,10 @@ const arr = [
   { id: 5, pid: 4 },
   { id: 6, pid: 5 },
 ];
-const tree = arrToTree(arr);
-console.log(tree);
+// const tree = arrToTree(arr);
+const treeMap = arrToTreeMap(arr);
+console.log(treeMap);
+console.log(arr);
 
 function traverseTreeBfs(root) {
   const ans = [];
@@ -50,5 +71,5 @@ function traverseTreeBfs(root) {
   return ans;
 }
 
-const arr2 = traverseTreeBfs(tree);
-console.log(arr2);
+// const arr2 = traverseTreeBfs(tree);
+// console.log(arr2);
